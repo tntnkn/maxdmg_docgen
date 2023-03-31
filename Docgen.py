@@ -36,6 +36,12 @@ class Docgen():
         self.__MakeDocumentJinja(f_name, tags)
         return DocHandle(f_name=f_name)
 
+    def DeleteDocument(self, doc_name):
+        try:
+            os.remove(doc_name)
+        except FileNotFoundError:
+            pass
+
     def __MakeDocumentJinja(self, f_name, tags):
         doc = self.__GetDoc(tags)
         if not doc:
